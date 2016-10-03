@@ -4,11 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "webpack-dev-server --content-base dist/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/react": "^0.14.37",
+    "@types/react-dom": "^0.14.17",
+    "@types/react-router": "^2.0.37",
     "chai": "^3.5.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "karma-webpack": "^1.8.0",
@@ -18,7 +22,7 @@
     "source-map-loader": "^0.1.5",
     "ts-loader": "^0.8.2",
     "tslint": "^3.15.1",
-    "typescript": "^2.1.0-dev.20161001",
+    "typescript": "next",
     "typings": "^1.4.0",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.1"

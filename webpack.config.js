@@ -17,9 +17,7 @@ module.exports = {
     },
     plugins: [
         // new CommonsChunkPlugin('commons', 'commons.js'),
-        new ExtractTextPlugin('[name].css', {
-            allChunks: true
-        })
+        new ExtractTextPlugin('[name].css', { allChunks: true })
     ],
     modulesDirectories: [
         'node_modules',
@@ -51,6 +49,12 @@ module.exports = {
                 loader: 'source-map-loader'
             }
         ]
+    },
+    resolve: {
+        alias: {
+            login: 'src/login',
+            errors: 'src/errors'
+        }
     },
     recordsPath: path.join(process.cwd(), 'cache', 'webpack.json')
 }

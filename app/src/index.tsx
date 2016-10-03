@@ -1,7 +1,11 @@
+import * as React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, Link } from 'react-router';
+import { Router, Route, Link, browserHistory } from 'react-router';
+import { Login } from './login';
+import { NotFound } from './errors';
 
 render((
-<Router history="browserHistory">
+<Router>
     <Route path="/" component="{Login}"/>
+    <Route path="*" component={NotFound} />
 </Router>), document.getElementById('app'));

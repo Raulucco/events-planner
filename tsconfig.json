@@ -1,18 +1,22 @@
 {
     "compilerOptions": {
-        "module": "commonjs",
+        "module": "es6",
+        "moduleResolution": "node",
         "noImplicitAny": true,
         "removeComments": true,
+        "allowSyntheticDefaultImports": true,
         "preserveConstEnums": true,
         "sourceMap": true,
         "target": "es5",
         "jsx": "react"
     },
     "include": [
-        "src/app/**/*"
+        "app/**/*",
+        "typing/index.d.ts"
     ],
     "exclude": [
         "node_modules",
-        "app/src/**/*.test.ts"
+        "app/src/**/*.test.ts",
+        "typings"
     ]
 }
