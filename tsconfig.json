@@ -11,7 +11,7 @@
         "jsx": "react"
     },
     "include": [
-        "app/**/*",
+        "app/src/**/*",
         "typing/index.d.ts"
     ],
     "exclude": [
