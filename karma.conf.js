@@ -1,7 +1,16 @@
-// Karma configuration
-// Generated on Sat Oct 01 2016 18:25:41 GMT+0200 (CEST)
+var webpackConfig = require('./webpack.config.js');
+var testGlob = 'app/**/test/*.js';
 
-module.exports = function(config) {
+delete webpackConfig.output;
+
+webpackConfig.devtool = 'inline-source-map';
+webpackConfig.externals = {
+  'react/addons': true,
+  'react/lib/ExecutionEnvironment': true,
+  'react/lib/ReactContext': true
+}
+
+module.exports = function (config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -14,19 +23,20 @@ module.exports = function(config) {
 
 
     // list of files / patterns to load in the browser
-    files: [
-      'app/src/**/.test.ts'
-    ],
+    files: [{
+      pattern: testGlob,
+      watched: false
+    }, ],
 
 
     // list of files to exclude
-    exclude: [
-    ],
+    exclude: [],
 
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      [testGlob]: ['webpack', 'sourcemap']
     },
 
 
@@ -64,6 +74,11 @@ module.exports = function(config) {
 
     // Concurrency level
     // how many browser should be started simultaneous
-    concurrency: Infinity
+    concurrency: Infinity,
+
+    webpack: webpackConfig,
+    webpackServer: {
+      noInfo: true //please don't spam the console when running in karma!
+    }
   })
 }

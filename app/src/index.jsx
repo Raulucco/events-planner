@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, Link, hashHistory } from 'react-router';
-import { Login } from 'login';
-import { NotFound } from 'errors';
+import { Router, Route, hashHistory } from 'react-router';
+import { Login } from 'planner/login';
+import { NotFound } from 'planner/errors';
 
 render((
 <Router history={hashHistory}>
