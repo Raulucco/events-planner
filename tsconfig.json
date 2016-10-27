@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "baseUrl": "app/src",
         "module": "es6",
         "moduleResolution": "node",
         "noImplicitAny": true,
@@ -7,16 +8,11 @@
         "allowSyntheticDefaultImports": true,
         "preserveConstEnums": true,
         "sourceMap": true,
-        "target": "es5",
+        "target": "es6",
         "jsx": "react"
     },
-    "include": [
-        "app/**/*",
-        "typing/index.d.ts"
-    ],
     "exclude": [
         "node_modules",
-        "app/src/**/*.test.ts",
-        "typings"
+        "app/src/**/*.test.ts"
     ]
 }

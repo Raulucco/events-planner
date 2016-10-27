@@ -1,5 +1,13 @@
-// Karma configuration
-// Generated on Sat Oct 01 2016 18:25:41 GMT+0200 (CEST)
+var webpackConf = require('./webpack.config');
+
+delete webpackConf.output;
+
+webpackConf.devtool = 'inline-source-map';
+webpackConf.externals = {
+  'react/addons': true,
+  'react/lib/ExecutionEnvironment': true,
+  'react/lib/ReactContext': true
+}
 
 module.exports = function(config) {
   config.set({
@@ -10,12 +18,12 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha'],
+    frameworks: ['mocha', 'chai', 'sinon'],
 
 
     // list of files / patterns to load in the browser
     files: [
-      'app/src/**/.test.ts'
+      { pattern: 'app/src/**/.test.tsx', include: false }
     ],
 
 
@@ -27,6 +35,8 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      '**/*.ts': ['webpack', 'sourcemap'],
+      '**/*.tsx': ['webpack', 'sourcemap']
     },
 
 
@@ -64,6 +74,11 @@ module.exports = function(config) {
 
     // Concurrency level
     // how many browser should be started simultaneous
-    concurrency: Infinity
+    concurrency: Infinity,
+
+    webpack: webpackConf,
+    webpackServer: {
+      noInfo: true //please don't spam the console when running in karma!
+    }
   })
 }
