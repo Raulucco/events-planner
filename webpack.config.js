@@ -46,7 +46,7 @@ module.exports = {
     },
     resolve: {
         alias: {
-            login: path.resolve(__dirname, 'app', 'src', 'login'),
+            user: path.resolve(__dirname, 'app', 'src', 'user'),
             'error-messages': path.resolve(__dirname, 'app', 'src', 'error-messages')
         },
         // root: './src',//path.resolve(__dirname, 'app', 'src'),

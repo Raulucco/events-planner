@@ -11,6 +11,7 @@
   "license": "ISC",
   "devDependencies": {
     "@types/history": "^2.0.39",
+    "@types/immutable": "^3.8.4",
     "@types/react": "^0.14.37",
     "@types/react-dom": "^0.14.17",
     "@types/react-router": "^2.0.37",
@@ -33,6 +34,7 @@
     "karma-webpack": "^1.8.0",
     "mocha": "^3.1.0",
     "phantomjs-prebuilt": "^2.1.13",
+    "redux-devtools": "^3.3.1",
     "sass": "^0.5.0",
     "sinon": "^1.17.6",
     "source-map-loader": "^0.1.5",
@@ -45,8 +47,11 @@
   },
   "dependencies": {
     "history": "^4.3.0",
+    "immutable": "^3.8.1",
+    "lodash": "^4.16.4",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
+    "react-redux": "^4.4.5",
     "react-router": "^2.8.1",
     "redux": "^3.6.0",
     "rx": "^4.1.0"
