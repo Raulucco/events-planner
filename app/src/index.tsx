@@ -1,9 +1,18 @@
 import * as React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, hashHistory } from 'react-router';
+import { Provider, createStore } from 'react-redux';
 import { Login } from 'user/login';
 import { CreateAccount } from 'user/create-account';
 import { NotFound } from 'error-messages';
+import { Events, CreateEvent, EditEvent } from 'event/index';
+import { userReducers } from 'user/reducers';
+import { eventReducers } from 'event/reducers';
+
+const store = createStore([
+    userReducers,
+    eventReducers
+]);
 
 class Root extends React.Component<any, any> {
     public render() {
@@ -18,9 +27,15 @@ class Root extends React.Component<any, any> {
 }
 
 render((
-<Router history={hashHistory}>
-    <Route path="/" component={Root}/>
-    <Route path="/login" component={Login}/>
-    <Route path="/create-account" component={CreateAccount} />
-    <Route path="/*" component={NotFound} />
-</Router>), document.getElementById('app'));
+    <Provider store={store}>
+        <Router history={hashHistory}>
+            <Route path="/" component={Root}/>
+            <Route path="/login" component={Login} />
+            <Route path="/create-account" component={CreateAccount} />
+            <Route path="/events" component={Events} >
+                <Route path="/create" component={CreateEvent} />
+                <Route path="/edit/*" component={EditEvent} />
+            </Route>
+            <Route path="/*" component={NotFound} />
+        </Router>
+</Provider>), document.getElementById('app'));
