@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, hashHistory } from 'react-router';
-import { Provider, createStore } from 'react-redux';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Login } from 'user/login';
 import { CreateAccount } from 'user/create-account';
 import { NotFound } from 'error-messages';
@@ -9,10 +10,20 @@ import { Events, CreateEvent, EditEvent } from 'event/index';
 import { userReducers } from 'user/reducers';
 import { eventReducers } from 'event/reducers';
 
-const store = createStore([
+const store = createStore(
     userReducers,
-    eventReducers
-]);
+    eventReducers,
+    applyMiddleware(store => next => action => {
+        const state = store.getState();
+
+        if (state.getIn(['user', 'log'])) {
+            hashHistory.push('/events');
+            return next(state);
+        }
+
+        return state;
+    })
+);
 
 class Root extends React.Component<any, any> {
     public render() {

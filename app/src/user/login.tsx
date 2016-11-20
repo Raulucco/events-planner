@@ -5,7 +5,7 @@ import { Map } from 'immutable';
 
 import { passwordValidator, usernameValidator } from './credential-validators';
 import { LoginCredential } from './credentials';
-import { loginStore } from './stores';
+// import { loginReducers } from './reducers';
 
 export class BaseLogin extends React.Component<LoginCredential, any> {
     public username: HTMLInputElement;
@@ -97,7 +97,7 @@ export class BaseLogin extends React.Component<LoginCredential, any> {
 function mapStateToProps(state: Map<any, any>) {
     const { username, password } = state.getIn(['user'], { username: null, password: null });
 
-    return { username, password, store: loginStore };
+    return { username, password };
 }
 
 export const Login = connect(mapStateToProps)(BaseLogin);

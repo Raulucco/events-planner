@@ -5,7 +5,7 @@ import { Map } from 'immutable';
 
 import { passwordValidator, usernameValidator, emailValidator } from './credential-validators';
 import { AccountCredential } from './credentials';
-import { registerStore } from './stores';
+// import { registerStore } from './stores';
 
 export class Register extends React.Component<AccountCredential, any> {
     password: HTMLInputElement;
@@ -159,7 +159,7 @@ export const CreateAccount = connect((state: Map<any, any>) => {
         username,
         password,
         bio,
-        email,
-        store: registerStore
+        email
+        // ,store: registerStore
     };
 })(Register);
